@@ -1,0 +1,37 @@
+<div class="car-container">
+	<img
+		alt=""
+		src="{{carPicture}}"
+	/>
+
+	<div class="car-title">
+		<h1>{{carName}}</h1>
+		<p>{{carDescription}}</p>
+	</div>
+
+	<div class="car-parts">
+		<div class="car-parts-points">
+			<point
+				(mouseenter)="handlePointMouseEnter(carPart)"
+				(mouseleave)="handlePointMouseLeave()"
+				*ngFor="let carPart of carParts"
+				[x]="carPart.x"
+				[y]="carPart.y"
+			>
+			</point>
+		</div>
+
+		<div [className]="'car-parts-info ' + (activePart ? showInfo ? 'in' : 'out' : '')">
+			<div
+				*ngIf="activePart"
+			>
+				<h2>{{activePart.name}}</h2>
+				<p>{{activePart.description}}</p>
+			</div>
+		</div>
+
+		<div class="car-parts-info-help">
+			Hover the points to see more details
+		</div>
+	</div>
+</div>
